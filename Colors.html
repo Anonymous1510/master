@@ -17,7 +17,7 @@ player.configure({
   drm: {
     clearKeys: {
       // 'key-id-in-hex': 'key-in-hex',
-      '18fe29fdda1b4ca306b4d8f08786fd10':'47f6fa3ca0462021aa1c0c09253ece58'
+      '18fe29fdda1b4ca306b4d8f08786fd10': '47f6fa3ca0462021aa1c0c09253ece58'
     }
   }
 });
@@ -26,7 +26,7 @@ window.player = player;
 window.ui = ui; 
 player.addEventListener('error', onPlayerErrorEvent); 
 controls.addEventListener('error', onUIErrorEvent); 
-try{await player.load('https://linearjitp-playback.astro.com.my/dash-wv/linear/2611/default_ott.mpd'); 
+try{await player.load('http://linearjitp-playback.astro.com.my/dash-wv/linear/2611/default_ott.mpd'); 
 console.log('The video has now been loaded!');} catch (error) {onPlayerError(error);}} 
 function onPlayerErrorEvent(errorEvent) {onPlayerError(event.detail);} 
 function onPlayerError(error) {console.error('Error code', error.code, 'object', error);} 
