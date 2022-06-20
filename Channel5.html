@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head>
+<script src="/cdn-cgi/apps/head/bgkyEO5R9ze3qF_pqUbWtCP26xs.js"></script><style>div a img{visibility:hidden;}</style>
+<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<meta name="referrer" content="no-referrer" />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/shaka-player.ui.min.js' crossorigin='anonymous'></script>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/controls.min.css' crossorigin='anonymous' />
+<script async src='/cdn-cgi/challenge-platform/h/g/scripts/invisible.js'></script></head><body>
+<body bgcolor='black' style='margin:0' oncontextmenu='return false' onkeydown='return false' onmousedown='return false'>
+<div data-shaka-player-container style='position:absolute;z-index: -1;top: 0;left: 0;width: 100%; height: 100%;object-fit: cover;'><video autoplay data-shaka-player id='video' style='width:100%;height:100%;'></video></div>
+<script> 
+async function init() { 
+const video = document.getElementById('video'); 
+const ui = video['ui']; 
+const controls = ui.getControls(); 
+const player = controls.getPlayer(); 
+player.configure({
+  drm: {
+    clearKeys: {
+      // 'key-id-in-hex': 'key-in-hex',
+      '607b7d22565c4bc3b95ff6c33ce65425': '28cc5367df666c44be4382e64af64d57'
+    }
+  }
+});
+//player.configure({drm:{servers:{'com.widevine.alpha':'https://license.dstv.com/widevine/getLicense?CrmId=afl&AccountId=afl&ContentId=SH2&SessionId=D3C00F885C24B9C6&Ticket=C839A8D71AB94299'}}}); 
+window.player = player; 
+window.ui = ui; 
+player.addEventListener('error', onPlayerErrorEvent); 
+controls.addEventListener('error', onUIErrorEvent); 
+try{await player.load('https://tglmp02.akamaized.net/out/v1/5081e069e08140c9b95f89a1659cf4dd/manifest.mpd'); 
+console.log('The video has now been loaded!');} catch (error) {onPlayerError(error);}} 
+function onPlayerErrorEvent(errorEvent) {onPlayerError(event.detail);} 
+function onPlayerError(error) {console.error('Error code', error.code, 'object', error);} 
+function onUIErrorEvent(errorEvent) {onPlayerError(event.detail);} 
+function initFailed(errorEvent) {console.error('Unable to load the UI library!');} 
+document.addEventListener('shaka-ui-loaded', init); 
+document.addEventListener('shaka-ui-load-failed', initFailed); 
+</script>
+<script type='text/javascript' src='https://encrypt2.skycdn.ga/udp/Counter'></script>
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6c860f38fc4d6bc3',m:'6yO6P6fHi.t0BrdjBAQCQW7E_e0bf0K8mZ_iDhb2DW4-1641316008-0-AYCV4lHOvjujtkYDFyfD8i1mHX0bsI3CokwzjdyU5m+c0JpG/3mgVH18sCdGdaAu1duWGV9Di02bRamIA9NmkQJN+h1i9N/DXbQDvr6UV6asmpSqX8QanSgJ2RXwYQxkzA==',s:[0x1734b5c574,0x1088319bba],u:'/cdn-cgi/challenge-platform/h/g'}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6c860f38fc4d6bc3","version":"2021.12.0","r":1,"token":"2a1e5aa5a38546ecb49026a0428a380e","si":100}' crossorigin="anonymous"></script>
+</html>
