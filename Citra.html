@@ -26,7 +26,7 @@ window.player = player;
 window.ui = ui; 
 player.addEventListener('error', onPlayerErrorEvent); 
 controls.addEventListener('error', onUIErrorEvent); 
-try{await player.load('https://linears-playback.astro.com.my/vsg/41Pfk2Y6zRWQCnB1S8MzeexltN9OBd065Esd2EDthRJgA=ur9X/dash-wv/jitp-linearwm/2700/default_ott.mpd'); 
+try{await player.load('https://linears-playback.astro.com.my/vsg/41Pfk2Y6zRWQCnB1S8Mzeexl-2T93cL2qiGzg3B9qn5Bw=yXOf/dash-wv/jitp-linearwm/2700/default_ott.mpd'); 
 console.log('The video has now been loaded!');} catch (error) {onPlayerError(error);}} 
 function onPlayerErrorEvent(errorEvent) {onPlayerError(event.detail);} 
 function onPlayerError(error) {console.error('Error code', error.code, 'object', error);} 
