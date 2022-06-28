@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <title>Radiant Media Player - Example iframe embedding</title>
+  <style>
+    /* This CSS is required to avoid layout issues */
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      background-color: #000;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://cdn.radiantmediatechs.com/rmp/7.9.1/js/rmp.min.js"></script>
+  <div id="rmp"></div>
+  <script>
+    var src = {
+      hls: 'http://platinumxmedia.xyz:8080/live/Instahub/bxL8msMEF2V3/121181.m3u8'
+    };
+    var settings = {
+      iframeMode: true,
+      iframeAllowed: true,
+      licenseKey: 'Kl8lbz16cz1rN2l2enM9Z2M9NnZvMnllaT9yb201ZGFzaXMzMGRiMEElXyo=',
+      src: src,
+      skin: 's2',
+      contentMetadata: {
+        poster: ['']
+      }
+    };
+    var rmp = new RadiantMP("rmp");
+    rmp.init(settings);
+  </script>
+</body>
+
+</html>
