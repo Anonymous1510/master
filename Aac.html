@@ -1,40 +1,22 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-    <head>
-        <title>Apple (Cupertino) Streaming - M3U8 Playlist</title>
-        <script type="text/javascript" src="../../bin-debug/jwplayer.js">
-        </script>
-        <script type="text/javascript" src="settings.js">
-        </script>
-        <script src="https://www.google.com/jsapi?key=ABQIAAAAmW4wY4GLARKwRKxx1EY4dxTCwYuWkdD_iTnqF3uxU7_DebvfxBREab8CD-MRcuvG-IzP2uSZrQpweg" type="text/javascript">
-        </script>
-        <script language="Javascript" type="text/javascript">
-            google.load("dojo", "1");
-        </script>
-    </head>
-    <body>
-        <script type="text/javascript">
-            document.write("<h1>" + document.title + "</h1>");
-        </script>
-        <p>
-            This parses a &lt;video&gt; tag and sets up a player in it's place for IE9, FF, Chrome, Safari, and Opera. IE < 9 will simply display "HTML5 Player should replace this".
-        </p>
-		<div id="player"></div>
-		<input id="m3u8path" type="text" value="http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8"/>
-		<a href="#" onclick="setup();return false;">Update</a>
-        <script type="text/javascript">
-            function setup(firsttime) {
-				if (!firsttime) {
-					jwplayer("player").remove();	
-				}
-            	jwplayer("player").setup({
-            		players: settings.players(window.location.href, ["html5", "download"]),
-					image: "http://content.bitsontherun.com/thumbs/gSzpo2wh-480.jpg",
-					file: document.getElementById("m3u8path").value
-            	});
-            }
-			setup(true);
-        </script>
-        <h3>HTML code</h3>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HLS Player (M3U8)</title>
+    <script src="hls.min.js" type="application/javascript"></script>
+  </head>
+  <body>
+    <video controls width="640" height="360"></video>
+    <script>
+      ((source) => {
+        if (typeof Hls == "undefined") return;
+        if (!document.querySelector("video")) return;
+        var hls = new Hls();
+        hls.loadSource(source);
+        hls.attachMedia(document.querySelector("video"));
+      })("https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8");
+    </script>
+  </body>
 </html>
