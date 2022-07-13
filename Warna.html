@@ -1,25 +1,49 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-    <meta charset=utf-8 />
-    <title>Your title</title>
-      
-    
-      <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
-      <script src="https://unpkg.com/video.js/dist/video.js"></script>
-      <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
-       
-    </head>
-    <body>
-      <video id="my_video_1" class="video-js vjs-fluid vjs-default-skin" controls preload="auto"
-      data-setup='{}'>
-        <source src="http://50.7.220.74:8278/Warna/playlist.m3u8?tid=m02000000000017487628&ct=17958&tsum=e9dc2c41615aa9b33c04bd71cfc005c9" type="application/x-mpegURL">
-      </video>
-      
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CDNBye JWPlayer Demo</title>
+    <!-- CDNBye Plugin -->
+    <script src="//cdn.jsdelivr.net/npm/cdnbye@latest"></script>
+    <script src="//cdn.jsdelivr.net/gh/teranode/jw-provider@0.0.9/provider.hlsjs.js"></script>
+    <!--    <script src="//cdn.jsdelivr.net/npm/cdnbye@latest/dist/jwplayer.provider.hls.js"></script>-->
+    <!-- JW Player Builds -->
+    <script src="//ssl.p.jwpcdn.com/player/v/8.22.0/jwplayer.js"></script>
+ 
+</head>
+ 
+<body>
+    <header></header>
+    <center>
+        <div id="demoplayer"></div>
+    </center>
     <script>
-    var player = videojs('my_video_1');
-    player.play();
+        jwplayer.key = "uoW6qHjBL3KNudxKVnwa3rt5LlTakbko9e6aQ6VUyKQ=";
+ 
+        jwplayer('demoplayer').setup({
+            file: 'http://50.7.220.74:8278/Warna/playlist.m3u8?tid=m02000000000017487628&ct=17958&tsum=e9dc2c41615aa9b33c04bd71cfc005c9',
+            width: 100%,
+            height: 100%,
+            autostart: true,
+            hlsjsConfig: {
+                // debug: true,
+                // Other hlsjsConfig options provided by hls.js
+                p2pConfig: {
+                    // logLevel: true,
+                    live: true, // set to false in VOD mode
+                    // Other p2pConfig options provided by CDNBye
+                }
+            },
+        });
+ 
+        jwplayer().on('play', function() {
+            jwplayer().hls.p2pEngine.on('stats', function({
+                totalHTTPDownloaded,
+                totalP2PDownloaded
+            }) {
+                // get totalHTTPDownloaded and totalP2PDownloaded here
+            })
+        })
     </script>
-      
-    </body>
-    </html>
+</body>
+</html>
