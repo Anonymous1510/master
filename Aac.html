@@ -8,7 +8,7 @@
     <script src="hls.min.js" type="application/javascript"></script>
   </head>
   <body>
-    <video controls width="640" height="360"></video>
+    <video controls width="100℅" height="100℅"></video>
     <script>
       ((source) => {
         if (typeof Hls == "undefined") return;
@@ -16,7 +16,7 @@
         var hls = new Hls();
         hls.loadSource(source);
         hls.attachMedia(document.querySelector("video"));
-      })("https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8");
+      })("http://admin.mastrolive.com/Stream/VOD/Dr.Strnge.2022.mp4");
     </script>
   </body>
 </html>
